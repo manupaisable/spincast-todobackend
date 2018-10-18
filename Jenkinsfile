@@ -25,7 +25,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-              sh 'java -jar /var/jenkins_home/workspace/todobackend-java/spincast-todobackend-inmemory/target/spincast-todobackend-inmemory-1.0.2.jar'
+                withEnv(["WORKSPACE=${env.JOB_NAME}"]) {
+                    sh 'java -jar /var/jenkins_home/workspace/${WORKSPACE}/spincast-todobackend-inmemory/target/spincast-todobackend-inmemory-1.0.2.jar'
+                }
             }
         }
     }
