@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2 -p 44419:44419 --network=docker_cd-tools-network' 
-        }
-    }
+    agent any
     stages {
         stage('Build') { 
             steps {
